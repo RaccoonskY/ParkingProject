@@ -37,8 +37,9 @@ namespace ParkingProject
             this.Password = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
             this.SignUpButton = new System.Windows.Forms.Button();
-            this.UserChangeButton = new System.Windows.Forms.Button();
             this.LogOut = new System.Windows.Forms.Button();
+            this.GoToVehiclesButton = new System.Windows.Forms.Button();
+            this.GoToLotsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -83,6 +84,7 @@ namespace ParkingProject
             this.LoginButton.TabIndex = 5;
             this.LoginButton.Text = "Войти";
             this.LoginButton.UseVisualStyleBackColor = true;
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // SignUpButton
             // 
@@ -92,15 +94,7 @@ namespace ParkingProject
             this.SignUpButton.TabIndex = 6;
             this.SignUpButton.Text = "Зарегистрироваться";
             this.SignUpButton.UseVisualStyleBackColor = true;
-            // 
-            // UserChangeButton
-            // 
-            this.UserChangeButton.Location = new System.Drawing.Point(46, 359);
-            this.UserChangeButton.Name = "UserChangeButton";
-            this.UserChangeButton.Size = new System.Drawing.Size(163, 29);
-            this.UserChangeButton.TabIndex = 7;
-            this.UserChangeButton.Text = "Редактировать";
-            this.UserChangeButton.UseVisualStyleBackColor = true;
+            this.SignUpButton.Click += new System.EventHandler(this.SignUpButton_Click);
             // 
             // LogOut
             // 
@@ -111,20 +105,39 @@ namespace ParkingProject
             this.LogOut.Text = "Выйти";
             this.LogOut.UseVisualStyleBackColor = true;
             // 
-            // UserLogin
+            // GoToVehiclesButton
+            // 
+            this.GoToVehiclesButton.Location = new System.Drawing.Point(249, 170);
+            this.GoToVehiclesButton.Name = "GoToVehiclesButton";
+            this.GoToVehiclesButton.Size = new System.Drawing.Size(146, 80);
+            this.GoToVehiclesButton.TabIndex = 9;
+            this.GoToVehiclesButton.Text = "Ваш Транспорт";
+            this.GoToVehiclesButton.UseVisualStyleBackColor = true;
+            // 
+            // GoToLotsButton
+            // 
+            this.GoToLotsButton.Location = new System.Drawing.Point(249, 273);
+            this.GoToLotsButton.Name = "GoToLotsButton";
+            this.GoToLotsButton.Size = new System.Drawing.Size(146, 80);
+            this.GoToLotsButton.TabIndex = 10;
+            this.GoToLotsButton.Text = "Ваши Места";
+            this.GoToLotsButton.UseVisualStyleBackColor = true;
+            // 
+            // UserLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 495);
+            this.ClientSize = new System.Drawing.Size(505, 453);
+            this.Controls.Add(this.GoToLotsButton);
+            this.Controls.Add(this.GoToVehiclesButton);
             this.Controls.Add(this.LogOut);
-            this.Controls.Add(this.UserChangeButton);
             this.Controls.Add(this.SignUpButton);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.UserName);
             this.Controls.Add(this.textBox1);
-            this.Name = "UserLogin";
+            this.Name = "UserLoginForm";
             this.Text = "ParkingProject";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -139,7 +152,8 @@ namespace ParkingProject
         private Label Password;
         private Button LoginButton;
         private Button SignUpButton;
-        private Button UserChangeButton;
         private Button LogOut;
+        private Button GoToVehiclesButton;
+        private Button GoToLotsButton;
     }
 }

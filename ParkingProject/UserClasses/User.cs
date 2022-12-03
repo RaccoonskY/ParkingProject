@@ -15,7 +15,10 @@ namespace ParkingProject.UserClasses
         public string Username { get { return username; } set { username = value; } }
         public float Balance { get { return balance; } set { balance = value; } }
         public string Id { get { return id; } set { id = value; } }
+        public User()
+        {
 
+        }
 
         public User(string name, float balance, string id)
         {

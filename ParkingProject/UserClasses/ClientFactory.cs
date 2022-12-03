@@ -17,6 +17,13 @@ namespace ParkingProject.UserClasses
         public string password { get; set; }
     }
 
+    public class UnsuccesfulResponse
+    {
+        public bool successful { get; set; }
+        public string detail { get; set; }
+    }
+
+
     public class ResponseUserLogin
     {
         public string username { get; set; }
@@ -46,15 +53,28 @@ namespace ParkingProject.UserClasses
         {
             
             
-            JsonContent content = JsonContent.Create(new RequestUserLogin { username = _username, password = _password });
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, urlDomain + "/api/v1/user");
-            var response = _httpClient.PostAsync(urlDomain + "  /api/v1/user", content);
-            var responseRes = response.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<ResponseUserLogin>().Result;
-            user.Id = responseRes.id;
-            user.Username = responseRes.username;
-            user.Balance = responseRes.balance;
-            return true;
+            var request = new RequestUserLogin 
+            { 
+                password = _password,
+                username = _username
+            };
+            var response = _httpClient.PostAsJsonAsync(urlDomain + "/api/v1/user", request);
+            if (response.Result.IsSuccessStatusCode)
+            {
+                var responseRes = response.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<ResponseUserLogin>().Result;
+                user.Id = responseRes.id;
+                user.Username = responseRes.username;
+                user.Balance = responseRes.balance;
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(response.Result.Content.ReadFromJsonAsync<UnsuccesfulResponse>().Result.detail);
+                return false;
+            }
+            
         }
+
 
 
         public void Dispose()
