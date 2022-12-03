@@ -36,5 +36,10 @@ namespace ParkingProject
         {
 
         }
+
+        private void ParkingLotForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

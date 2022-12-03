@@ -127,6 +127,7 @@
             this.Controls.Add(this.ParkingLotsBox);
             this.Name = "ParkingLotForm";
             this.Text = "ParkingLotForm";
+            this.Load += new System.EventHandler(this.ParkingLotForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

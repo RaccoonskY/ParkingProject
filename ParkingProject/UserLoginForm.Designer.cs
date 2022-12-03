@@ -40,6 +40,10 @@ namespace ParkingProject
             this.LogOut = new System.Windows.Forms.Button();
             this.GoToVehiclesButton = new System.Windows.Forms.Button();
             this.GoToLotsButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.UserBalanceText = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.UsernameText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -123,11 +127,51 @@ namespace ParkingProject
             this.GoToLotsButton.Text = "Ваши Места";
             this.GoToLotsButton.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(463, 64);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(37, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "RUB";
+            // 
+            // UserBalanceText
+            // 
+            this.UserBalanceText.AutoSize = true;
+            this.UserBalanceText.Location = new System.Drawing.Point(436, 64);
+            this.UserBalanceText.Name = "UserBalanceText";
+            this.UserBalanceText.Size = new System.Drawing.Size(21, 20);
+            this.UserBalanceText.TabIndex = 13;
+            this.UserBalanceText.Text = "__";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(373, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 20);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Баланс:";
+            // 
+            // UsernameText
+            // 
+            this.UsernameText.AutoSize = true;
+            this.UsernameText.Location = new System.Drawing.Point(373, 30);
+            this.UsernameText.Name = "UsernameText";
+            this.UsernameText.Size = new System.Drawing.Size(107, 20);
+            this.UsernameText.TabIndex = 11;
+            this.UsernameText.Text = "Пользователь";
+            // 
             // UserLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 453);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.UserBalanceText);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.UsernameText);
             this.Controls.Add(this.GoToLotsButton);
             this.Controls.Add(this.GoToVehiclesButton);
             this.Controls.Add(this.LogOut);
@@ -155,5 +199,9 @@ namespace ParkingProject
         private Button LogOut;
         private Button GoToVehiclesButton;
         private Button GoToLotsButton;
+        private Label label2;
+        private Label UserBalanceText;
+        private Label label1;
+        private Label UsernameText;
     }
 }

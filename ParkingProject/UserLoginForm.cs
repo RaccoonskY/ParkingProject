@@ -51,8 +51,12 @@ namespace ParkingProject
         {
             string name = textBox1.Text;
             string password = textBox2.Text;
-            MessageBox.Show("CHECK LOGIN");
-
+            if (clientFactory.UserLogin(name, password, currentUser))
+            {
+                MessageBox.Show("You logged Successfully!");
+            }
+            UserBalanceText.Text = currentUser.Balance.ToString();
+            UsernameText.Text = currentUser.Username;
         }
     }
 }
