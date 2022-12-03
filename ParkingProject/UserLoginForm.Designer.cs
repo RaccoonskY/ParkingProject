@@ -108,6 +108,7 @@ namespace ParkingProject
             this.LogOut.TabIndex = 8;
             this.LogOut.Text = "Выйти";
             this.LogOut.UseVisualStyleBackColor = true;
+            this.LogOut.Click += new System.EventHandler(this.LogOut_Click);
             // 
             // GoToVehiclesButton
             // 
@@ -117,6 +118,7 @@ namespace ParkingProject
             this.GoToVehiclesButton.TabIndex = 9;
             this.GoToVehiclesButton.Text = "Ваш Транспорт";
             this.GoToVehiclesButton.UseVisualStyleBackColor = true;
+            this.GoToVehiclesButton.Click += new System.EventHandler(this.GoToVehiclesButton_Click);
             // 
             // GoToLotsButton
             // 
@@ -126,6 +128,7 @@ namespace ParkingProject
             this.GoToLotsButton.TabIndex = 10;
             this.GoToLotsButton.Text = "Ваши Места";
             this.GoToLotsButton.UseVisualStyleBackColor = true;
+            this.GoToLotsButton.Click += new System.EventHandler(this.GoToLotsButton_Click);
             // 
             // label2
             // 

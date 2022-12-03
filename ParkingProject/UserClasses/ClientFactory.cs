@@ -9,6 +9,8 @@ using Newtonsoft.Json;
 using System.Net.Http.Json;
 using ParkingProject.UserClasses;
 using System.Net.Http.Headers;
+using Microsoft.VisualBasic.ApplicationServices;
+using static System.Collections.Specialized.BitVector32;
 
 namespace ParkingProject.UserClasses
 {
@@ -87,7 +89,7 @@ namespace ParkingProject.UserClasses
             
         }
 
-        public bool UserLogin(string _username, string _password, User user, string session = null)
+        public bool UserLogin(string _username, string _password, User user, string session)
         {
             var request = new RequestUserLogin
             {
@@ -104,9 +106,27 @@ namespace ParkingProject.UserClasses
                 //MessageBox.Show("SESSION: " + responseRes.session.id+"\n"+responseRes.session.expires);
                 var userResponse = _httpClient.GetAsync(urlDomain + "/api/v1/user");
                 var userResponseRes = userResponse.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<ResponseUserLogin>().Result;
+
                 user.Id = userResponseRes.id;
                 user.Username = userResponseRes.username;
                 user.Balance = userResponseRes.balance;
+                session = responseRes.session.id;
+
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(response.Result.Content.ReadFromJsonAsync<UnsuccesfulResponse>().Result.detail);
+                return false;
+            }
+        }
+
+        public bool UserLogout()
+        {
+            var response = _httpClient.DeleteAsync(urlDomain + "/api/v1/user/logout");
+
+            if (response.Result.IsSuccessStatusCode)
+            {
                 return true;
             }
             else

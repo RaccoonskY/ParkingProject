@@ -6,6 +6,7 @@ namespace ParkingProject
     {
         public User currentUser = new User();
         public ClientFactory clientFactory = new ClientFactory();
+        public string sessionid = "";
 
         public UserLoginForm()
         {
@@ -51,12 +52,33 @@ namespace ParkingProject
         {
             string name = textBox1.Text;
             string password = textBox2.Text;
-            if (clientFactory.UserLogin(name, password, currentUser))
+            if (clientFactory.UserLogin(name, password, currentUser, sessionid))
             {
                 MessageBox.Show("You logged Successfully!");
             }
             UserBalanceText.Text = currentUser.Balance.ToString();
             UsernameText.Text = currentUser.Username;
+        }
+
+        private void LogOut_Click(object sender, EventArgs e)
+        {
+            clientFactory.UserLogout();
+            UserBalanceText.Text = "__";
+            UsernameText.Text = "Пользователь";
+            sessionid = "";
+            currentUser = new();
+        }
+
+        private void GoToVehiclesButton_Click(object sender, EventArgs e)
+        {
+            UserVehicleForm userVehicleForm = new UserVehicleForm();
+            userVehicleForm.ShowDialog();
+        }
+
+        private void GoToLotsButton_Click(object sender, EventArgs e)
+        {
+            ParkingLotForm parkingLotForm = new ParkingLotForm();
+            parkingLotForm.ShowDialog();
         }
     }
 }
