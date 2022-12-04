@@ -31,6 +31,7 @@ namespace ParkingProject
             if (clientFactory.UserAddVehicle(model, lisence,currentUser))
             {
                 MessageBox.Show("Vehicle is added Successfully!");
+                InitializeUserVehicles();
             }
         }
 
@@ -38,6 +39,10 @@ namespace ParkingProject
         {
             clientFactory.UserGetVehicles(currentUser);
             UserVehs.Items.Clear();
+
+            UserBalanceText.Text = currentUser.Balance.ToString();
+            UsernameText.Text = currentUser.Username;
+
             if (currentUser.Vehicles.Count() > 0)
             {
                 foreach (var item in currentUser.Vehicles)
@@ -46,6 +51,24 @@ namespace ParkingProject
                 }
             }
          
+        }
+
+        private void DeleteVehButton_Click(object sender, EventArgs e)
+        {
+            if (currentUser.Vehicles.Count()>0)
+            {
+                var vehicleChosen = UserVehs.Text.Split(' ');
+                if (currentUser.Vehicles.Exists(x => x.license_plate == vehicleChosen[0]))
+                {
+                    if (clientFactory.UserDeleteVehicle(currentUser, currentUser.Vehicles.Find(x => x.license_plate == vehicleChosen[0]).id))
+                    {
+                        MessageBox.Show("Vehicle is deleted successfully!");
+                        InitializeUserVehicles();
+                    }
+                }
+                
+            }
+           
         }
     }
 }

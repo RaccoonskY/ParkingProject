@@ -126,6 +126,7 @@
             this.DeleteVehButton.TabIndex = 24;
             this.DeleteVehButton.Text = "Удалить";
             this.DeleteVehButton.UseVisualStyleBackColor = true;
+            this.DeleteVehButton.Click += new System.EventHandler(this.DeleteVehButton_Click);
             // 
             // AddVehichleButton
             // 

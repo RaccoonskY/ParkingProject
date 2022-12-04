@@ -197,9 +197,21 @@ namespace ParkingProject.UserClasses
 
         }
 
-        public void Dispose()
+        public bool UserDeleteVehicle (User user, string vehicleid)
         {
-            _httpClient.Dispose();
+          
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Sessionid);
+            var response = _httpClient.DeleteAsync(urlDomain + "/api/v1/vehicle/"+vehicleid);
+            if (response.Result.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
+
     }
 }
