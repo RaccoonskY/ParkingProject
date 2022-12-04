@@ -11,6 +11,7 @@ using ParkingProject.UserClasses;
 using System.Net.Http.Headers;
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.Collections.Specialized.BitVector32;
+using System.ComponentModel;
 
 namespace ParkingProject.UserClasses
 {
@@ -18,6 +19,24 @@ namespace ParkingProject.UserClasses
     {
         public string username { get; set; }
         public string password { get; set; }
+    }
+    public class RequestAddVehicle
+    {
+        public string model { get; set; }
+        public string license_plate { get; set; }
+    }
+
+    public class ResponseGetVehicle
+    {
+        public string model { get; set; }
+        public string license_plate { get; set; }
+
+        public string id { get; set; }
+    }
+
+    public class ResponseVehicles
+    {
+        public List<Vehicle> Vehicles { get; set; }
     }
 
     public class LoginSession
@@ -89,7 +108,7 @@ namespace ParkingProject.UserClasses
             
         }
 
-        public bool UserLogin(string _username, string _password, User user, string session)
+        public bool UserLogin(string _username, string _password, User user)
         {
             var request = new RequestUserLogin
             {
@@ -103,14 +122,15 @@ namespace ParkingProject.UserClasses
 
                 var responseRes = response.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<UserLogin>().Result;
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", responseRes.session.id);
-                //MessageBox.Show("SESSION: " + responseRes.session.id+"\n"+responseRes.session.expires);
+                //MessageBox.Show("SESSION: " + responseRes.session.id+"\n"+responseRes.session.expires)
                 var userResponse = _httpClient.GetAsync(urlDomain + "/api/v1/user");
                 var userResponseRes = userResponse.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<ResponseUserLogin>().Result;
 
+                user.Sessionid = responseRes.session.id;
                 user.Id = userResponseRes.id;
                 user.Username = userResponseRes.username;
                 user.Balance = userResponseRes.balance;
-                session = responseRes.session.id;
+                
 
                 return true;
             }
@@ -136,6 +156,46 @@ namespace ParkingProject.UserClasses
             }
         }
 
+        public bool UserAddVehicle(string _model, string _license, User user)
+        {
+            var request = new RequestAddVehicle
+            {
+                model = _model,
+                license_plate = _license
+            };
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",user.Sessionid );
+            var response = _httpClient.PostAsJsonAsync(urlDomain + "/api/v1/vehicle", request);
+            if (response.Result.IsSuccessStatusCode)
+            {
+                var responseRes = response.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<ResponseGetVehicle>().Result;
+                 
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(response.Result.Content.ReadFromJsonAsync<UnsuccesfulResponse>().Result.detail);
+                return false;
+            }
+        }
+
+        public bool UserGetVehicles(User user)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Sessionid);
+            var response = _httpClient.GetAsync(urlDomain + "/api/v1/vehicle");
+            if (response.Result.IsSuccessStatusCode)
+            {
+                var responseRes = response.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<List<Vehicle>>().Result;
+                user.Vehicles = responseRes;
+                
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(response.Result.Content.ReadFromJsonAsync<UnsuccesfulResponse>().Result.detail);
+                return false;
+            }
+
+        }
 
         public void Dispose()
         {
