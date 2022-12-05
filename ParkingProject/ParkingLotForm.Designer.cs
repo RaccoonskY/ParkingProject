@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(376, 56);
+            this.label1.Location = new System.Drawing.Point(372, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 20);
             this.label1.TabIndex = 4;
@@ -97,7 +97,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(466, 56);
+            this.label2.Location = new System.Drawing.Point(483, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 9;
@@ -111,6 +111,7 @@
             this.ChooseLotButton.TabIndex = 10;
             this.ChooseLotButton.Text = "Выбрать";
             this.ChooseLotButton.UseVisualStyleBackColor = true;
+            this.ChooseLotButton.Click += new System.EventHandler(this.ChooseLotButton_Click);
             // 
             // ParkingLotForm
             // 
@@ -140,7 +141,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private TextBox LotSearchTextBox;
         private ListBox UserLotsBox;
-        private Label UserBalanceText;
+        public Label UserBalanceText;
         private Label label2;
         private Button ChooseLotButton;
     }

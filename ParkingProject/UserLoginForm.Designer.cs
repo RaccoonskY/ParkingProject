@@ -44,6 +44,7 @@ namespace ParkingProject
             this.UserBalanceText = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.UsernameText = new System.Windows.Forms.Label();
+            this.PayBalance = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -112,7 +113,7 @@ namespace ParkingProject
             // 
             // GoToVehiclesButton
             // 
-            this.GoToVehiclesButton.Location = new System.Drawing.Point(249, 170);
+            this.GoToVehiclesButton.Location = new System.Drawing.Point(249, 168);
             this.GoToVehiclesButton.Name = "GoToVehiclesButton";
             this.GoToVehiclesButton.Size = new System.Drawing.Size(146, 80);
             this.GoToVehiclesButton.TabIndex = 9;
@@ -122,7 +123,7 @@ namespace ParkingProject
             // 
             // GoToLotsButton
             // 
-            this.GoToLotsButton.Location = new System.Drawing.Point(249, 273);
+            this.GoToLotsButton.Location = new System.Drawing.Point(249, 254);
             this.GoToLotsButton.Name = "GoToLotsButton";
             this.GoToLotsButton.Size = new System.Drawing.Size(146, 80);
             this.GoToLotsButton.TabIndex = 10;
@@ -133,7 +134,7 @@ namespace ParkingProject
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(463, 64);
+            this.label2.Location = new System.Drawing.Point(464, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 14;
@@ -142,7 +143,7 @@ namespace ParkingProject
             // UserBalanceText
             // 
             this.UserBalanceText.AutoSize = true;
-            this.UserBalanceText.Location = new System.Drawing.Point(436, 64);
+            this.UserBalanceText.Location = new System.Drawing.Point(425, 65);
             this.UserBalanceText.Name = "UserBalanceText";
             this.UserBalanceText.Size = new System.Drawing.Size(21, 20);
             this.UserBalanceText.TabIndex = 13;
@@ -151,26 +152,38 @@ namespace ParkingProject
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(373, 64);
+            this.label1.Location = new System.Drawing.Point(358, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "Баланс:";
+            this.label1.Click += new System.EventHandler(this.label1_Click_2);
             // 
             // UsernameText
             // 
             this.UsernameText.AutoSize = true;
-            this.UsernameText.Location = new System.Drawing.Point(373, 30);
+            this.UsernameText.Location = new System.Drawing.Point(374, 31);
             this.UsernameText.Name = "UsernameText";
             this.UsernameText.Size = new System.Drawing.Size(107, 20);
             this.UsernameText.TabIndex = 11;
             this.UsernameText.Text = "Пользователь";
+            // 
+            // PayBalance
+            // 
+            this.PayBalance.Location = new System.Drawing.Point(249, 340);
+            this.PayBalance.Name = "PayBalance";
+            this.PayBalance.Size = new System.Drawing.Size(146, 58);
+            this.PayBalance.TabIndex = 15;
+            this.PayBalance.Text = "Пополнить Баланс";
+            this.PayBalance.UseVisualStyleBackColor = true;
+            this.PayBalance.Click += new System.EventHandler(this.PayBalance_Click);
             // 
             // UserLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(505, 453);
+            this.Controls.Add(this.PayBalance);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.UserBalanceText);
             this.Controls.Add(this.label1);
@@ -206,5 +219,6 @@ namespace ParkingProject
         private Label UserBalanceText;
         private Label label1;
         private Label UsernameText;
+        private Button PayBalance;
     }
 }

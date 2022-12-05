@@ -15,6 +15,11 @@ using System.ComponentModel;
 
 namespace ParkingProject.UserClasses
 {
+
+    public class RequestAmount
+    {
+        public float amount { get; set; }
+    }
     public class RequestUserLogin
     {
         public string username { get; set; }
@@ -26,6 +31,12 @@ namespace ParkingProject.UserClasses
         public string license_plate { get; set; }
     }
 
+    public class RequestBuyLot
+    {
+        public string place_id { get; set; }
+        public string vehicle_id { get; set; }
+        public float hours { get; set; }
+    }
     public class ResponseGetVehicle
     {
         public string model { get; set; }
@@ -166,9 +177,7 @@ namespace ParkingProject.UserClasses
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",user.Sessionid );
             var response = _httpClient.PostAsJsonAsync(urlDomain + "/api/v1/vehicle", request);
             if (response.Result.IsSuccessStatusCode)
-            {
-                var responseRes = response.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<ResponseGetVehicle>().Result;
-                 
+            { 
                 return true;
             }
             else
@@ -213,5 +222,68 @@ namespace ParkingProject.UserClasses
 
         }
 
+        public bool UserGetLots(User user)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Sessionid);
+            var response1 = _httpClient.GetAsync(urlDomain + "/api/v1/place?available=true");
+            var response2 = _httpClient.GetAsync(urlDomain + "/api/v1/place/my");
+            if (response1.Result.IsSuccessStatusCode && response2.Result.IsSuccessStatusCode)
+            {
+                var response1Res = response1.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<List<Place>>().Result;
+                var response2Res = response2.Result.EnsureSuccessStatusCode().Content.ReadFromJsonAsync<List<Place>>().Result;
+                user.Places = response1Res;
+                user.UserPlaces = response2Res;
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        
+        public bool BuyParkingLot(User user,string placeId, string vehicleId, float hours,float amount)
+        { 
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Sessionid);
+            var request = new RequestBuyLot
+            {
+                place_id = placeId,
+                vehicle_id = vehicleId,
+                hours = hours
+            };
+            var response = _httpClient.PostAsJsonAsync(urlDomain + "/api/v1/place", request);
+            if (response.Result.IsSuccessStatusCode)
+            {
+                user.Balance -= amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+        }
+
+        public bool PayBalance(User user, float _amount)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", user.Sessionid);
+            var request = new RequestAmount
+            { 
+                amount = _amount
+            };
+            var response = _httpClient.PostAsJsonAsync(urlDomain + "/api/v1/payment",request);
+            if (response.Result.IsSuccessStatusCode)
+            {
+                user.Balance += _amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

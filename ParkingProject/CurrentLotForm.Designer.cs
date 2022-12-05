@@ -56,7 +56,7 @@
             // UserBalanceText
             // 
             this.UserBalanceText.AutoSize = true;
-            this.UserBalanceText.Location = new System.Drawing.Point(338, 69);
+            this.UserBalanceText.Location = new System.Drawing.Point(328, 69);
             this.UserBalanceText.Name = "UserBalanceText";
             this.UserBalanceText.Size = new System.Drawing.Size(21, 20);
             this.UserBalanceText.TabIndex = 12;
@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(275, 69);
+            this.label1.Location = new System.Drawing.Point(254, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 11;
@@ -74,7 +74,7 @@
             // UsernameText
             // 
             this.UsernameText.AutoSize = true;
-            this.UsernameText.Location = new System.Drawing.Point(275, 35);
+            this.UsernameText.Location = new System.Drawing.Point(254, 35);
             this.UsernameText.Name = "UsernameText";
             this.UsernameText.Size = new System.Drawing.Size(75, 20);
             this.UsernameText.TabIndex = 10;

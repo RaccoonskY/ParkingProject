@@ -67,6 +67,10 @@ namespace ParkingProject
             UsernameText.Text = currentUser.Username;
         }
 
+        public void RefreshBalanceData()
+        {
+            UserBalanceText.Text = currentUser.Balance.ToString();
+        }
         private void LogOut_Click(object sender, EventArgs e)
         {
             clientFactory.UserLogout();
@@ -101,8 +105,37 @@ namespace ParkingProject
 
         private void GoToLotsButton_Click(object sender, EventArgs e)
         {
-            ParkingLotForm parkingLotForm = new ParkingLotForm();
-            parkingLotForm.ShowDialog();
+            if (currentUser.Registration == true)
+            {
+                ParkingLotForm parkingLotForm = new ParkingLotForm();
+
+                parkingLotForm.currentUser = currentUser;
+
+                parkingLotForm.sessionid = currentUser.Sessionid;
+                parkingLotForm.clientFactory = clientFactory;
+                parkingLotForm.InitializeParkingLots(this);
+
+                parkingLotForm.ShowDialog();
+            }
+        }
+
+        private void PayBalance_Click(object sender, EventArgs e)
+        {
+            if (currentUser.Registration == true)
+            {
+                PaymentForm paymentForm = new PaymentForm();
+
+                paymentForm.currentUser = currentUser;
+
+                paymentForm.sessionid = currentUser.Sessionid;
+                paymentForm.clientFactory = clientFactory;
+                paymentForm.InitializePayment(this);
+            }
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }
