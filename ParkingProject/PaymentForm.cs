@@ -42,5 +42,10 @@ namespace ParkingProject
             }
     
         }
+
+        private void PaymentForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

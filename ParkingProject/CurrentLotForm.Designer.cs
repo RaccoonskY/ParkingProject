@@ -42,21 +42,25 @@
             this.RentHoursTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.UserVehsBox = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(365, 69);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(379, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 20);
+            this.label2.Size = new System.Drawing.Size(40, 20);
             this.label2.TabIndex = 13;
             this.label2.Text = "RUB";
             // 
             // UserBalanceText
             // 
             this.UserBalanceText.AutoSize = true;
-            this.UserBalanceText.Location = new System.Drawing.Point(328, 69);
+            this.UserBalanceText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.UserBalanceText.Location = new System.Drawing.Point(329, 131);
             this.UserBalanceText.Name = "UserBalanceText";
             this.UserBalanceText.Size = new System.Drawing.Size(21, 20);
             this.UserBalanceText.TabIndex = 12;
@@ -65,18 +69,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(254, 69);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(252, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Balance: ";
+            this.label1.Text = "Баланс: ";
             // 
             // UsernameText
             // 
             this.UsernameText.AutoSize = true;
-            this.UsernameText.Location = new System.Drawing.Point(254, 35);
+            this.UsernameText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.UsernameText.Location = new System.Drawing.Point(252, 99);
             this.UsernameText.Name = "UsernameText";
-            this.UsernameText.Size = new System.Drawing.Size(75, 20);
+            this.UsernameText.Size = new System.Drawing.Size(80, 20);
             this.UsernameText.TabIndex = 10;
             this.UsernameText.Text = "Username";
             // 
@@ -111,18 +117,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(26, 69);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 20);
+            this.label4.Size = new System.Drawing.Size(81, 20);
             this.label4.TabIndex = 17;
             this.label4.Text = "Название:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.Location = new System.Drawing.Point(26, 99);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 20);
+            this.label5.Size = new System.Drawing.Size(50, 20);
             this.label5.TabIndex = 18;
             this.label5.Text = "Цена:";
             // 
@@ -155,9 +163,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(26, 143);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 20);
+            this.label7.Size = new System.Drawing.Size(140, 20);
             this.label7.TabIndex = 22;
             this.label7.Text = "Количество часов:";
             // 
@@ -169,11 +178,27 @@
             this.UserVehsBox.Size = new System.Drawing.Size(151, 28);
             this.UserVehsBox.TabIndex = 24;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.BackgroundImage = global::ParkingProject.Properties.Resources.user_128;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = global::ParkingProject.Properties.Resources.user_128;
+            this.pictureBox1.Location = new System.Drawing.Point(253, 16);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(79, 73);
+            this.pictureBox1.MinimumSize = new System.Drawing.Size(79, 73);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(79, 73);
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
+            // 
             // CurrentLotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(431, 285);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.UserVehsBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.RentHoursTextBox);
@@ -188,8 +213,10 @@
             this.Controls.Add(this.UserBalanceText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.UsernameText);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "CurrentLotForm";
             this.Text = "CurrentLotForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +237,6 @@
         private TextBox RentHoursTextBox;
         private Label label7;
         private ComboBox UserVehsBox;
+        private PictureBox pictureBox1;
     }
 }
